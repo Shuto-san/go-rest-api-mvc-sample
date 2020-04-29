@@ -1,19 +1,27 @@
 package errors
 
 import (
-    "net/http"
+	"net/http"
 )
 
 type RestErr struct {
-  Message string `json:"message"`
-  Status int `json:"status"`
-  Error string `json:"error"`
+	Message string `json:"message"`
+	Status  int    `json:"status"`
+	Error   string `json:"error"`
 }
 
 func NewBadRequestError(message string) *RestErr {
-  return &RestErr {
-    Message: message,
-    Status: http.StatusBadRequest,
-    Error: "bad request",
-  }
+	return &RestErr{
+		Message: message,
+		Status:  http.StatusBadRequest,
+		Error:   "bad request",
+	}
+}
+
+func NewInternalServerError(message string) *RestErr {
+	return &RestErr{
+		Message: message,
+		Status:  http.StatusBadRequest,
+		Error:   "internal server error",
+	}
 }
